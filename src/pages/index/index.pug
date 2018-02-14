@@ -1,0 +1,35 @@
+extends ../base
+
+//-variables for page index.pug
+block variables
+	- var title = "Memory game";
+
+
+block content
+	.preloader
+		.preloader__add
+	section.section.section-hero.section-hero_show
+		.hero
+			.hero-center
+				.hero-center__pic
+					img.hero-center__bg(src=require("../../img/StartGame.png"))
+				h1.hero-center__title Memory game
+				a.button.button_playback(href="#") Начать игру
+	section.section.section-happy
+		.happy
+			.happy-center
+				.happy-center__pic
+					img.happy-center__bg(src=require("../../img/EndGame.png"))
+				.happy-center__text
+					span.happy-center__win Поздравляем!
+					span.happy-center__conclusion Ваш итоговый счет: 450
+				a.button.button_again(href="#") Ещё раз
+
+	section.section.section-game
+		.game
+			.game-row
+				.game-header
+					.game-left
+						a.game-left__again(href="#") Начать заного
+					.game-right
+						span.game-right__score Очки: 0
