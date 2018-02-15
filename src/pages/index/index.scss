@@ -229,6 +229,11 @@
   font-weight: 700;
 }
 
+.open {
+  opacity: 0;
+  transition: .3s;
+}
+
 /*=== $preloader ===*/
 
 .preloader {
