@@ -111,7 +111,7 @@ export default function initGame(){
       var newCard = document.createElement("div");
 
           //присваиваем ему класс
-          newCard.className = "game-cards__card";
+          newCard.className = "game-cards__card flipped";
 
 
       //помещаем внутрь него блоки задней стороны карты и фронтальной
@@ -137,9 +137,26 @@ export default function initGame(){
 
           // добавляем в dom
           document.querySelector('.game').appendChild(newCard);
+
     }
 
   }
+
+  function showAllCards() {
+  var mainSection = document.querySelector('.section-hero');
+      if(mainSection.classList.contains('section-hero_show')){
+        setTimeout(showBlocks, 7000);
+      } else {
+        var scoreCard = document.getElementsByClassName('game-cards__card');
+        for(var i = 0; i < scoreCard.length; i++) {
+          if(scoreCard[i].classList.contains('flipped')){
+            scoreCard[i].classList.toggle('flipped');
+            console.log(scoreCard[i]);
+          }
+        }
+       }
+  }
+  setTimeout(showAllCards, 7000);
 
   //клик по карте
   function onCardClick() {
@@ -169,13 +186,13 @@ export default function initGame(){
         var sec = scoreCard[i].classList.contains('open');
         if(sec){
           if(scoreIncrementer > 0){
-            score.innerText = -- scoreIncrementer * 42;
+            score.innerText = 'Очки: ' + -- scoreIncrementer * 42;
           }
         }
       }
       setTimeout(flipBack, 1500);
     }
-    checkForGameOver();
+    setTimeout(checkForGameOver, 1500);
   }
 
   //функция добавляет класс open элементу, и пара одинаковых карт исчезает
@@ -203,7 +220,6 @@ export default function initGame(){
     flipperCards[1].classList.toggle('flipped');
 
     flipperCards = [];
-
   }
 
   //функция начать игру сначала
@@ -234,6 +250,7 @@ export default function initGame(){
       endGame.style.display = 'block';
       endGame.querySelector('.happy-center__conclusion').innerText = 'Ваш итоговый счет: ' + scoreIncrementer * 42;
     }
+
   }
 
 
