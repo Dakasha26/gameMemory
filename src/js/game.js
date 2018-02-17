@@ -10,64 +10,64 @@ export default function initGame(){
 
   // массив картинок
   var numbers = [
-                 "url('src/img/0C.png')",
-                 "url('src/img/0D.png')",
-                 "url('src/img/0H.png')",
-                 "url('src/img/0S.png')",
-                 "url('src/img/2C.png')",
-                 "url('src/img/2D.png')",
-                 "url('src/img/2H.png')",
-                 "url('src/img/2S.png')",
-                 "url('src/img/3C.png')",
-                 "url('src/img/3D.png')",
-                 "url('src/img/3H.png')",
-                 "url('src/img/3S.png')",
-                 "url('src/img/4C.png')",
-                 "url('src/img/4D.png')",
-                 "url('src/img/4H.png')",
-                 "url('src/img/4S.png')",
-                 "url('src/img/5C.png')",
-                 "url('src/img/5D.png')",
-                 "url('src/img/5H.png')",
-                 "url('src/img/5S.png')",
-                 "url('src/img/6C.png')",
-                 "url('src/img/6D.png')",
-                 "url('src/img/6H.png')",
-                 "url('src/img/6S.png')",
-                 "url('src/img/7C.png')",
-                 "url('src/img/7D.png')",
-                 "url('src/img/7H.png')",
-                 "url('src/img/7S.png')",
-                 "url('src/img/8C.png')",
-                 "url('src/img/8D.png')",
-                 "url('src/img/8H.png')",
-                 "url('src/img/8S.png')",
-                 "url('src/img/9C.png')",
-                 "url('src/img/9D.png')",
-                 "url('src/img/9H.png')",
-                 "url('src/img/9S.png')",
-                 "url('src/img/AC.png')",
-                 "url('src/img/AA.png')",
-                 "url('src/img/AH.png')",
-                 "url('src/img/AS.png')",
-                 "url('src/img/JC.png')",
-                 "url('src/img/JD.png')",
-                 "url('src/img/JH.png')",
-                 "url('src/img/JS.png')",
-                 "url('src/img/KC.png')",
-                 "url('src/img/KD.png')",
-                 "url('src/img/KH.png')",
-                 "url('src/img/KS.png')",
-                 "url('src/img/QC.png')",
-                 "url('src/img/QD.png')",
-                 "url('src/img/QH.png')",
-                 "url('src/img/QS.png')",
+                 "url('./images/0C.png')",
+                 "url('./images/0D.png')",
+                 "url('./images/0H.png')",
+                 "url('./images/0S.png')",
+                 "url('./images/2C.png')",
+                 "url('./images/2D.png')",
+                 "url('./images/2H.png')",
+                 "url('./images/2S.png')",
+                 "url('./images/3C.png')",
+                 "url('./images/3D.png')",
+                 "url('./images/3H.png')",
+                 "url('./images/3S.png')",
+                 "url('./images/4C.png')",
+                 "url('./images/4D.png')",
+                 "url('./images/4H.png')",
+                 "url('./images/4S.png')",
+                 "url('./images/5C.png')",
+                 "url('./images/5D.png')",
+                 "url('./images/5H.png')",
+                 "url('./images/5S.png')",
+                 "url('./images/6C.png')",
+                 "url('./images/6D.png')",
+                 "url('./images/6H.png')",
+                 "url('./images/6S.png')",
+                 "url('./images/7C.png')",
+                 "url('./images/7D.png')",
+                 "url('./images/7H.png')",
+                 "url('./images/7S.png')",
+                 "url('./images/8C.png')",
+                 "url('./images/8D.png')",
+                 "url('./images/8H.png')",
+                 "url('./images/8S.png')",
+                 "url('./images/9C.png')",
+                 "url('./images/9D.png')",
+                 "url('./images/9H.png')",
+                 "url('./images/9S.png')",
+                 "url('./images/AC.png')",
+                 "url('./images/AA.png')",
+                 "url('./images/AH.png')",
+                 "url('./images/AS.png')",
+                 "url('./images/JC.png')",
+                 "url('./images/JD.png')",
+                 "url('./images/JH.png')",
+                 "url('./images/JS.png')",
+                 "url('./images/KC.png')",
+                 "url('./images/KD.png')",
+                 "url('./images/KH.png')",
+                 "url('./images/KS.png')",
+                 "url('./images/QC.png')",
+                 "url('./images/QD.png')",
+                 "url('./images/QH.png')",
+                 "url('./images/QS.png')"
   ];
 
 
   //создаем цикл
   for (var n in numbers) {
-    // для каждого индекса пушим в наш массивcards
+    // для каждого индекса пушим в наш массив cards
     cards.push({
       image: numbers[n]
     });
@@ -137,26 +137,35 @@ export default function initGame(){
 
           // добавляем в dom
           document.querySelector('.game').appendChild(newCard);
-
     }
 
   }
 
+  //показываем все карты вверх с задержкой в 7 секунд
   function showAllCards() {
-  var mainSection = document.querySelector('.section-hero');
-      if(mainSection.classList.contains('section-hero_show')){
-        setTimeout(showBlocks, 7000);
-      } else {
-        var scoreCard = document.getElementsByClassName('game-cards__card');
+
+      var startSection = document.querySelector('.section-hero');
+
+        if(startSection.classList.contains('section-hero_show')){
+
+          setTimeout(showAllCards, 7000);
+
+        } else {
+
+      var scoreCard = document.getElementsByClassName('game-cards__card');
+
         for(var i = 0; i < scoreCard.length; i++) {
+
           if(scoreCard[i].classList.contains('flipped')){
             scoreCard[i].classList.toggle('flipped');
-            console.log(scoreCard[i]);
           }
+
         }
+
        }
   }
   setTimeout(showAllCards, 7000);
+
 
   //клик по карте
   function onCardClick() {
@@ -172,6 +181,7 @@ export default function initGame(){
       }
   }
 
+
   //функция сравивает парные и не парные карты
   function checkConcid() {
 
@@ -182,18 +192,23 @@ export default function initGame(){
     } else if (flipperCards[0].querySelector('.game-cards__back').style.backgroundImage !== flipperCards[1].querySelector('.game-cards__back').style.backgroundImage){
 
       var scoreCard = document.querySelectorAll('.game-cards__card');
+
       for(var i = 0; i < scoreCard.length; i++){
+
         var sec = scoreCard[i].classList.contains('open');
+
         if(sec){
           if(scoreIncrementer > 0){
             score.innerText = 'Очки: ' + -- scoreIncrementer * 42;
           }
         }
+
       }
       setTimeout(flipBack, 1500);
     }
     setTimeout(checkForGameOver, 1500);
   }
+
 
   //функция добавляет класс open элементу, и пара одинаковых карт исчезает
   function flipDissapiar(){
@@ -205,6 +220,7 @@ export default function initGame(){
       var scoreCard = document.querySelectorAll('.game-cards__card');
 
        for(var i = 0; i < scoreCard.length; i++){
+
         var sec = scoreCard[i].classList.contains('open');
          if(!sec){
           score.innerText = 'Очки: ' + ++scoreIncrementer * 42;
@@ -212,6 +228,7 @@ export default function initGame(){
        }
       flipperCards = [];
   }
+
 
   //функция добавляет и убирает класс flipped
   function flipBack() {
@@ -221,6 +238,7 @@ export default function initGame(){
 
     flipperCards = [];
   }
+
 
   //функция начать игру сначала
   function resetGame() {
@@ -235,6 +253,7 @@ export default function initGame(){
     });
   }
   resetGame();
+
 
   //функция сравнивает колличество карт
   function checkForGameOver() {

@@ -2,6 +2,14 @@ export default function initInterface(){
 
   (function() {
 
+// preloader
+  $(window).on('load', function(){
+    $('.preloader').delay(1000).fadeOut('slow');
+  });
+ })();
+
+  (function() {
+
     var reset = document.querySelector('.button_playback');
 
     reset.addEventListener('click', function(){
@@ -19,12 +27,6 @@ export default function initInterface(){
     });
   })();
 
-  $(function() {
 
-// preloader
-  $(window).on('load', function(){
-    $('.preloader').delay(1000).fadeOut('slow');
-  });
- });
 
 }
