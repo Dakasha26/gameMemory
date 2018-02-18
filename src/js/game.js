@@ -5,10 +5,10 @@ export default function initGame(){
   var score = document.querySelector('.game-right__score');
   var endGame = document.querySelector('.section-happy');
   var scoreIncrementer;
-  var cards = []; //пустой массив который хранит карты
+  var cards = []; //empty array save our cards
 
 
-  // массив картинок
+  //array pictures
   var numbers = [
                  "url('./images/0C.png')",
                  "url('./images/0D.png')",
@@ -65,83 +65,73 @@ export default function initGame(){
   ];
 
 
-  //создаем цикл
+  //create loop
   for (var n in numbers) {
-    // для каждого индекса пушим в наш массив cards
+    // each index add our array
     cards.push({
       image: numbers[n]
     });
   }
 
 
-  //перемешиваем наши карты
+  //mix our cards
   function shuffle(arrayToShuffle) {
     return arrayToShuffle.sort(function() { return 0.5 - Math.random();});
   }
 
   window.addEventListener("load", startGame);
 
-  var chosenCards;  //здесь храним карты для игры
-  var gridWidth = 6;  //колличество карт в ряду
-  var gridHeight = 3; // колличество рядов с картами
+  var chosenCards;  //save cards for game
+  var gridWidth = 6;  //total many cards wendy
+  var gridHeight = 3; //total many cards row
 
 
   function startGame() {
-    // мешаем массив карт
+    // mis array cards
     cards = shuffle(cards);
 
-    //перемещаем карты в выбранный массив
-    //который будет выводит нам случайный набор карт с нужным колличеством карт
+    //output random array cards
     var howManyCards = gridWidth * gridHeight * 0.5;
         chosenCards = cards.slice(0, howManyCards);
 
-        //удваиваем массив
         chosenCards = chosenCards.concat(chosenCards);
-        //console.log(chosenCards);
 
-        // сново перемешиваем
         chosenCards = shuffle(chosenCards);
         flipperCards = [];
         scoreIncrementer = 0;
 
-    //создаем из массива наши карты в DOM дереве
+    //create block cards in DOM three
     for (var card in chosenCards) {
 
-      // создаем новый блок
       var newCard = document.createElement("div");
+          newCard.className = 'game-cards__card flipped data-tid="Card"';
 
-          //присваиваем ему класс
-          newCard.className = "game-cards__card flipped";
-
-
-      //помещаем внутрь него блоки задней стороны карты и фронтальной
       var cardFront = document.createElement("div");
           cardFront.className = "game-cards__front";
           newCard.appendChild(cardFront);
 
       var cardBack = document.createElement("div");
-          cardBack.className = ("game-cards__back");
+          cardBack.className = ('game-cards__back data-tid="Card-flipped"');
           cardBack.style.backgroundImage = chosenCards[card].image;
           newCard.appendChild(cardBack);
 
-      // где расположим наши карты
+      // location our cards
       var row = Math.floor(card / gridWidth);
       var column = card % gridWidth;
 
-          //позиционируем наши карты
+          //position our cards
           newCard.style.top = row * 200 +"px";
           newCard.style.left = column * 150 +"px";
 
-          // вешаем событие клика
           newCard.addEventListener("click", onCardClick);
 
-          // добавляем в dom
+          // add DOM
           document.querySelector('.game').appendChild(newCard);
     }
 
   }
 
-  //показываем все карты вверх с задержкой в 7 секунд
+  //show all cards front side
   function showAllCards() {
 
       var startSection = document.querySelector('.section-hero');
@@ -167,7 +157,7 @@ export default function initGame(){
   setTimeout(showAllCards, 7000);
 
 
-  //клик по карте
+  //click on card
   function onCardClick() {
 
     if(!this.classList.contains('flipped') && flipperCards.length < 2) {
@@ -182,7 +172,7 @@ export default function initGame(){
   }
 
 
-  //функция сравивает парные и не парные карты
+  //pair and not pair
   function checkConcid() {
 
     if(flipperCards[0].querySelector('.game-cards__back').style.backgroundImage === flipperCards[1].querySelector('.game-cards__back').style.backgroundImage) {
@@ -210,7 +200,7 @@ export default function initGame(){
   }
 
 
-  //функция добавляет класс open элементу, и пара одинаковых карт исчезает
+  //opacity cards
   function flipDissapiar(){
 
     for(var i = 0; i < flipperCards.length; i++){
@@ -230,7 +220,7 @@ export default function initGame(){
   }
 
 
-  //функция добавляет и убирает класс flipped
+  //function add class flipped
   function flipBack() {
 
     flipperCards[0].classList.toggle('flipped');
@@ -240,7 +230,7 @@ export default function initGame(){
   }
 
 
-  //функция начать игру сначала
+  //game start again
   function resetGame() {
 
     var btnAgain = document.querySelector('.game-left__again');
@@ -255,16 +245,16 @@ export default function initGame(){
   resetGame();
 
 
-  //функция сравнивает колличество карт
+  //game over function
   function checkForGameOver() {
 
-    // если все карты имеют класс flipped
+    // if all card has class flipped
     var matchedCards= document.getElementsByClassName("flipped");
 
-    //все карты
+    //and all cards
     var allCards = document.getElementsByClassName("game-cards__card");
 
-    // если колличество совпало, то выводим блок о результах игры
+    // cards have class flipped = all cards - show block win and result scores
     if (matchedCards.length == allCards.length) {
       endGame.style.display = 'block';
       endGame.querySelector('.happy-center__conclusion').innerText = 'Ваш итоговый счет: ' + scoreIncrementer * 42;

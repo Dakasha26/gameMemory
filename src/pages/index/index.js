@@ -9,8 +9,8 @@ import './index.scss';
 import initGame from '../../js/game';
 import initInterface from '../../js/interface';
 
-/*=== init modules js ===*/
 
+/*=== init modules ===*/
 initGame();
 initInterface();
 

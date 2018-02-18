@@ -13,11 +13,11 @@
     <div class="preloader">
       <div class="preloader__add"></div>
     </div>
-    <section class="section section-hero section-hero_show">
+    <section class="section section-hero section-hero_show" data-tid="App">
       <div class="hero">
         <div class="hero-center">
           <div class="hero-center__pic"><img class="hero-center__bg" src="images/StartGame.png"></div>
-          <h1 class="hero-center__title">Memory game</h1><a class="button button_playback" href="#">Начать игру</a>
+          <h1 class="hero-center__title">Memory game</h1><a class="button button_playback" href="#" data-tid="NewGame-startGame">Начать игру</a>
         </div>
       </div>
     </section>
@@ -25,16 +25,16 @@
       <div class="happy">
         <div class="happy-center">
           <div class="happy-center__pic"><img class="happy-center__bg" src="images/EndGame.png"></div>
-          <div class="happy-center__text"><span class="happy-center__win">Поздравляем!</span><span class="happy-center__conclusion">Ваш итоговый счет: 450</span></div><a class="button button_again" href="#">Ещё раз</a>
+          <div class="happy-center__text"><span class="happy-center__win">Поздравляем!</span><span class="happy-center__conclusion">Ваш итоговый счет: 450</span></div><a class="button button_again" href="#" data-tid="EndGame-retryGame">Ещё раз</a>
         </div>
       </div>
     </section>
     <section class="section section-game">
-      <div class="game">
+      <div class="game" data-tid="Deck">
         <div class="game-row">
           <div class="game-header">
-            <div class="game-left"><a class="game-left__again" href="#">Начать заного</a></div>
-            <div class="game-right"><span class="game-right__score">Очки: 0</span></div>
+            <div class="game-left"><a class="game-left__again" href="#" data-tid="Menu-newGame">Начать заного</a></div>
+            <div class="game-right"><span class="game-right__score" data-tid="Menu-scores">Очки: 0</span></div>
           </div>
         </div>
       </div>

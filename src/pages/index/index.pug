@@ -8,13 +8,13 @@ block variables
 block content
 	.preloader
 		.preloader__add
-	section.section.section-hero.section-hero_show
+	section.section.section-hero.section-hero_show(data-tid="App")
 		.hero
 			.hero-center
 				.hero-center__pic
 					img.hero-center__bg(src=require("../../img/StartGame.png"))
 				h1.hero-center__title Memory game
-				a.button.button_playback(href="#") Начать игру
+				a.button.button_playback(href="#" data-tid="NewGame-startGame") Начать игру
 	section.section.section-happy
 		.happy
 			.happy-center
@@ -23,13 +23,13 @@ block content
 				.happy-center__text
 					span.happy-center__win Поздравляем!
 					span.happy-center__conclusion Ваш итоговый счет: 450
-				a.button.button_again(href="#") Ещё раз
+				a.button.button_again(href="#" data-tid="EndGame-retryGame") Ещё раз
 
 	section.section.section-game
-		.game
+		.game(data-tid="Deck")
 			.game-row
 				.game-header
 					.game-left
-						a.game-left__again(href="#") Начать заного
+						a.game-left__again(href="#" data-tid="Menu-newGame") Начать заного
 					.game-right
-						span.game-right__score Очки: 0
+						span.game-right__score(data-tid="Menu-scores") Очки: 0
